@@ -8,3 +8,8 @@ button, input, select, textarea { font: inherit; }
 @keyframes rise-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .page-enter { animation: rise-in 360ms ease-out both; }
 .display-font { font-family: 'Space Grotesk', sans-serif; }
+.ner-map-marker { background: transparent; border: 0; }
+.ner-map-marker span { display: flex; width: 28px; height: 28px; align-items: center; justify-content: center; border: 2px solid #fff; border-radius: 999px; background: var(--marker-color); box-shadow: 0 2px 8px rgba(23, 55, 71, 0.28); color: #fff; font-size: 15px; font-weight: 700; }
+.leaflet-container { font-family: 'DM Sans', sans-serif; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { border-radius: 0; }
+.leaflet-popup-content { margin: 13px 14px; }
