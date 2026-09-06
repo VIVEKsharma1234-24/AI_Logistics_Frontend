@@ -1,0 +1,9 @@
+import { ArrowUpRight, Clock3, MapPin } from 'lucide-react'
+import RiskBadge from './RiskBadge'
+
+const severityStyles = { CRITICAL: 'border-l-[#e4513f] bg-[#fffaf8]', HIGH: 'border-l-[#e98932] bg-[#fffdf9]', MODERATE: 'border-l-[#e2bd27] bg-[#fffef8]', LOW: 'border-l-[#28a879] bg-[#fbfefd]' }
+const statusStyles = { Active: 'bg-[#fff0ec] text-[#d94d35]', Acknowledged: 'bg-[#fff6e7] text-[#b8741e]', Monitoring: 'bg-[#eef5f5] text-[#367985]', Resolved: 'bg-[#e8f7f5] text-[#168d84]' }
+
+export default function AlertManagementCard({ alert, onOpen }) {
+  return <article className={`border border-[#dce5e7] border-l-4 p-5 shadow-[0_4px_16px_rgba(31,67,80,0.035)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(31,67,80,0.08)] ${severityStyles[alert.severity]}`}><div className="flex items-start justify-between gap-3"><RiskBadge level={alert.severity.charAt(0) + alert.severity.slice(1).toLowerCase()} /><span className={`px-2 py-1 text-[10px] font-bold uppercase tracking-[0.1em] ${statusStyles[alert.status]}`}>{alert.status}</span></div><h3 className="display-font mt-4 text-lg font-bold text-[#173747]">{alert.title}</h3><p className="mt-2 text-sm leading-relaxed text-[#66808a]">{alert.message}</p><div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[#e7eeee] pt-4 text-xs text-[#78929b]"><span className="flex items-center gap-1.5"><MapPin size={14} />{alert.location}</span><span className="flex items-center gap-1.5"><Clock3 size={14} />{alert.timestamp}</span></div><button type="button" onClick={() => onOpen(alert)} className="mt-4 flex items-center gap-1 text-xs font-bold text-[#2c7480] hover:text-[#ef6847]">View alert details <ArrowUpRight size={14} /></button></article>
+}
