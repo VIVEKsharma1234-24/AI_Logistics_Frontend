@@ -1,0 +1,2 @@
+const styles = { Blocked: 'bg-[#fff0ec] text-[#d94d35]', Restricted: 'bg-[#fff6e7] text-[#b8741e]', Clear: 'bg-[#e8f7f5] text-[#168d84]' }
+export default function RoadStatusBadge({ status }) { return <span className={`inline-flex items-center gap-1.5 text-[11px] font-bold ${styles[status] || styles.Clear}`}><span className="h-2 w-2 rounded-full bg-current" />{status}</span> }

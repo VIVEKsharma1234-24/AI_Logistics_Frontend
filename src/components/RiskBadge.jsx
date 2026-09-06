@@ -1,0 +1,2 @@
+const styles = { Critical: 'bg-[#fff0ec] text-[#d94d35]', High: 'bg-[#fff6e7] text-[#b8741e]', Moderate: 'bg-[#fffbe5] text-[#9b8114]', Low: 'bg-[#e8f7f5] text-[#168d84]' }
+export default function RiskBadge({ level }) { return <span className={`inline-flex items-center gap-1.5 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.1em] ${styles[level] || styles.Low}`}><span className="h-1.5 w-1.5 rounded-full bg-current" />{level} risk</span> }

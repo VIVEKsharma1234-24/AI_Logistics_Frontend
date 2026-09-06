@@ -1,0 +1,3 @@
+import { Clock3, MapPin } from 'lucide-react'
+import RiskBadge from './RiskBadge'
+export default function IncidentCard({ title, location, time, level, reports }) { return <article className="border border-[#e1e9ea] bg-[#fbfcfc] p-3"><div className="flex items-start justify-between gap-3"><h4 className="text-sm font-bold text-[#284c58]">{title}</h4><RiskBadge level={level} /></div><div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-[#79929a]"><span className="flex items-center gap-1"><MapPin size={13} />{location}</span><span className="flex items-center gap-1"><Clock3 size={13} />{time}</span></div><p className="mt-3 border-t border-[#e8eeee] pt-2 text-[11px] font-semibold text-[#5e7b83]">{reports} citizen reports linked</p></article> }

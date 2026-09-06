@@ -1,0 +1,1 @@
+export default function EmptyState({ label = 'No records to display' }) { return <div className="flex min-h-28 items-center justify-center text-sm text-[#8aa0a6]">{label}</div> }

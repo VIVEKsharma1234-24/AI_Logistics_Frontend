@@ -1,0 +1,14 @@
+import { AlertTriangle, BellRing, Construction, FileWarning, House, ShieldAlert } from 'lucide-react'
+export const dashboardStats = [
+  { label: 'Active critical zones', value: '08', description: 'Immediate attention required', trend: 'Critical', tone: 'critical', icon: ShieldAlert },
+  { label: 'High risk zones', value: '17', description: 'Under continuous monitoring', trend: 'Elevated', tone: 'high', icon: AlertTriangle },
+  { label: 'Blocked roads', value: '12', description: 'Access disruption reported', trend: '12 routes', tone: 'critical', icon: Construction },
+  { label: 'Active alerts', value: '04', description: 'Public warnings in circulation', trend: 'Live now', tone: 'warning', icon: BellRing },
+  { label: 'Affected villages', value: '36', description: 'Across 9 districts', trend: '+6 today', tone: 'high', icon: House },
+  { label: 'Incidents reported', value: '124', description: 'Last 30 days', trend: '+18%', tone: 'stable', icon: FileWarning },
+]
+export const alerts = [{ title: 'Landslide risk escalation', location: 'Mawphlang, East Khasi Hills', time: '12 min ago', level: 'Critical', detail: 'Rainfall threshold exceeded for 3 consecutive hours.' }, { title: 'Route closure advisory', location: 'NH-13, Tawang', time: '38 min ago', level: 'High', detail: 'Rockfall debris reported near kilometre marker 42.' }, { title: 'Community preparedness notice', location: 'Dima Hasao district', time: '1 hr ago', level: 'Moderate', detail: 'Residents advised to avoid low-lying access roads.' }]
+export const roads = [{ name: 'NH-13 Tawang route', status: 'Blocked', detail: 'Debris clearance in progress', updated: '18 min ago' }, { name: 'Mawphlang-Balat road', status: 'Restricted', detail: 'Single-lane traffic only', updated: '42 min ago' }, { name: 'Aizawl bypass', status: 'Clear', detail: 'Normal movement', updated: '1 hr ago' }, { name: 'Siliguri-Gangtok corridor', status: 'Restricted', detail: 'Visibility below 200m', updated: '2 hrs ago' }]
+export const priorities = [{ title: 'Mawphlang primary cluster', district: 'East Khasi Hills', people: '1,240', level: 'Critical', action: 'Mawphlang priority' }, { title: 'Sangti valley settlements', district: 'Tawang', people: '680', level: 'High', action: 'Sangti priority' }, { title: 'Jatinga hillside communities', district: 'Dima Hasao', people: '420', level: 'High', action: 'Jatinga priority' }]
+export const incidents = [{ title: 'Slope failure near school access', location: 'Khliehriat', time: '24 min ago', level: 'Critical', reports: 8 }, { title: 'Road surface displacement', location: 'Bomdila', time: '1 hr ago', level: 'High', reports: 5 }]
+export const trendData = [{ day: 'Mon', rainfall: 18, risk: 32 }, { day: 'Tue', rainfall: 26, risk: 38 }, { day: 'Wed', rainfall: 42, risk: 45 }, { day: 'Thu', rainfall: 34, risk: 41 }, { day: 'Fri', rainfall: 58, risk: 63 }, { day: 'Sat', rainfall: 72, risk: 78 }, { day: 'Sun', rainfall: 48, risk: 68 }]

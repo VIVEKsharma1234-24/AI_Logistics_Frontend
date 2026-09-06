@@ -1,0 +1,1 @@
+export default function LoadingState({ label = 'Loading operational data' }) { return <div className="flex min-h-28 items-center justify-center gap-3 text-sm text-[#79929a]"><span className="h-4 w-4 animate-spin rounded-full border-2 border-[#b7d8d5] border-t-[#168d84]" />{label}</div> }
