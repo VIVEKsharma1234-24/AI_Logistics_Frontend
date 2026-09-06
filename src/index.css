@@ -5,6 +5,9 @@
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; }
 button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { min-height: 2.25rem; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #f0a64a; outline-offset: 2px; }
+@media (prefers-contrast: more) { :root { color: #0b1e26; } .border, [class*="border-"] { border-color: #55727a !important; } }
 @keyframes rise-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .page-enter { animation: rise-in 360ms ease-out both; }
 .display-font { font-family: 'Space Grotesk', sans-serif; }

@@ -1,0 +1,10 @@
+export const roadRecords = [
+  { id: 'road-001', name: 'NH-10', status: 'BLOCKED', risk: 92, updated: '8 minutes ago', affectedVillages: 3, reason: 'Landslide', location: 'Sevoke to Gangtok corridor', details: 'A slope failure has deposited debris across both lanes near kilometre marker 42.', response: 'Clearance equipment has been dispatched. Use the alternate Rangpo route.' },
+  { id: 'road-002', name: 'NH-13', status: 'PARTIALLY_BLOCKED', risk: 76, updated: '18 minutes ago', affectedVillages: 2, reason: 'Rockfall debris', location: 'Tawang route', details: 'One lane remains open under controlled movement while debris is cleared.', response: 'Proceed only with local clearance team guidance.' },
+  { id: 'road-003', name: 'Mawphlang-Balat Road', status: 'HIGH_RISK', risk: 68, updated: '32 minutes ago', affectedVillages: 4, reason: 'Slope movement', location: 'East Khasi Hills', details: 'Visible cracking has been reported along the upper shoulder of the road.', response: 'Avoid stopping on the exposed shoulder and monitor further movement.' },
+  { id: 'road-004', name: 'Aizawl Bypass', status: 'OPEN', risk: 24, updated: '45 minutes ago', affectedVillages: 0, reason: 'No active blockage', location: 'Aizawl southern ridge', details: 'Road is open with normal traffic movement and no active restrictions.', response: 'No action required.' },
+  { id: 'road-005', name: 'NH-6 Shillong Corridor', status: 'OPEN', risk: 31, updated: '1 hour ago', affectedVillages: 1, reason: 'Wet surface', location: 'Shillong approach', details: 'Surface is wet following rainfall, but the carriageway remains passable.', response: 'Maintain reduced speed during rainfall.' },
+  { id: 'road-006', name: 'Sangti Valley Road', status: 'BLOCKED', risk: 88, updated: '1 hour ago', affectedVillages: 2, reason: 'Flooded crossing', location: 'Sangti Valley, Tawang', details: 'Water has overtopped the low crossing and access is unsafe for vehicles.', response: 'Emergency teams are assessing a temporary crossing.' },
+]
+
+export const roadFilters = ['ALL', 'OPEN', 'HIGH_RISK', 'PARTIALLY_BLOCKED', 'BLOCKED']

@@ -1,2 +1,3 @@
-const styles = { Blocked: 'bg-[#fff0ec] text-[#d94d35]', Restricted: 'bg-[#fff6e7] text-[#b8741e]', Clear: 'bg-[#e8f7f5] text-[#168d84]' }
-export default function RoadStatusBadge({ status }) { return <span className={`inline-flex items-center gap-1.5 text-[11px] font-bold ${styles[status] || styles.Clear}`}><span className="h-2 w-2 rounded-full bg-current" />{status}</span> }
+const styles = { OPEN: 'bg-[#e8f7f5] text-[#168d84]', PARTIALLY_BLOCKED: 'bg-[#fff6e7] text-[#b8741e]', HIGH_RISK: 'bg-[#fffbe5] text-[#9b8114]', BLOCKED: 'bg-[#fff0ec] text-[#d94d35]', Blocked: 'bg-[#fff0ec] text-[#d94d35]', Restricted: 'bg-[#fff6e7] text-[#b8741e]', Clear: 'bg-[#e8f7f5] text-[#168d84]' }
+const labels = { PARTIALLY_BLOCKED: 'Partially blocked', HIGH_RISK: 'High risk' }
+export default function RoadStatusBadge({ status }) { return <span className={`inline-flex items-center gap-1.5 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.08em] ${styles[status] || styles.OPEN}`}><span className="h-2 w-2 rounded-full bg-current" />{labels[status] || status}</span> }

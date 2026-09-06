@@ -1,9 +1,10 @@
-import { BellRing, ChartNoAxesCombined, ClipboardList, FileWarning, LayoutDashboard, Map, Settings, Siren } from 'lucide-react'
+import { BellRing, ChartNoAxesCombined, ClipboardList, FileWarning, LayoutDashboard, Map, Settings, Siren, Waypoints } from 'lucide-react'
 
 export const primaryNavigation = [
   { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
   { label: 'Risk Map', path: '/risk-map', icon: Map },
   { label: 'Risk Analytics', path: '/risk-analytics', icon: ChartNoAxesCombined },
+  { label: 'Road Monitoring', path: '/road-monitoring', icon: Waypoints },
   { label: 'Incidents', path: '/incidents', icon: ClipboardList },
   { label: 'Alerts', path: '/alerts', icon: BellRing, badge: '4' },
   { label: 'Emergency Response', path: '/emergency-response', icon: Siren },
@@ -15,6 +16,7 @@ export const pageDetails = {
   '/dashboard': { eyebrow: 'Operations overview', title: 'Regional situation room', description: 'A coordinated view of landslide risk, active incidents and response readiness across the North Eastern Region.' },
   '/risk-map': { eyebrow: 'Terrain intelligence', title: 'Risk map', description: 'Monitor risk zones and changing terrain conditions across the region.' },
   '/risk-analytics': { eyebrow: 'Model insights', title: 'Risk analytics', description: 'Explore simulated rainfall, risk, incident and road-access trends for the monitored region.' },
+  '/road-monitoring': { eyebrow: 'Access network', title: 'Road monitoring', description: 'Track road availability, blockage causes and affected communities across the region.' },
   '/incidents': { eyebrow: 'Field operations', title: 'Incidents', description: 'Track reported landslides and coordinate incident ownership from one queue.' },
   '/alerts': { eyebrow: 'Public safety', title: 'Alerts', description: 'Review active warnings and communication status across affected districts.' },
   '/emergency-response': { eyebrow: 'Command & control', title: 'Emergency response', description: 'Coordinate response teams, resources and access routes during an event.' },

@@ -1,0 +1,15 @@
+export default {
+  appName: 'NER-SAFE',
+  search: 'ऑपरेशन खोजें',
+  notifications: 'सूचनाएं',
+  language: 'भाषा',
+  english: 'अंग्रेज़ी',
+  hindi: 'हिंदी',
+  settings: 'सेटिंग्स',
+  lowNetworkMode: 'कम नेटवर्क मोड',
+  lowNetworkDescription: 'कम कनेक्टिविटी में रिफ्रेश कम करें और उपलब्ध कैश डेटा को प्राथमिकता दें।',
+  lowNetworkNote: 'यह पूरी ऑफलाइन सुविधा नहीं है। डेटा केवल मान्य प्रतिक्रिया वाले ऐप सत्र में उपलब्ध रहेगा।',
+  saveSettings: 'सेटिंग्स इस डिवाइस पर सेव हैं।',
+  connected: 'कनेक्टेड',
+  demoValues: 'डेमो मान दिखाए जा रहे हैं, ये बैकएंड डेटा नहीं हैं।',
+}

@@ -1,0 +1,15 @@
+export default {
+  appName: 'NER-SAFE',
+  search: 'Search operations',
+  notifications: 'Notifications',
+  language: 'Language',
+  english: 'English',
+  hindi: 'Hindi',
+  settings: 'Settings',
+  lowNetworkMode: 'Low Network Mode',
+  lowNetworkDescription: 'Reduce refresh frequency and prioritize cached data when connectivity is limited.',
+  lowNetworkNote: 'This does not provide full offline functionality. Data remains available only while the app session has a valid response.',
+  saveSettings: 'Settings are saved on this device.',
+  connected: 'Connected',
+  demoValues: 'Demo values are shown and are not backend data.',
+}

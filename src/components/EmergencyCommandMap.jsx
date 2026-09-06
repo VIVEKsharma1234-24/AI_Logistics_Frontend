@@ -1,0 +1,12 @@
+import L from 'leaflet'
+import { MapContainer, Marker, Polyline, Popup, TileLayer } from 'react-leaflet'
+import { emergencyFacilities, mapCenter } from '../data/riskMap'
+import { safestRoute } from '../data/emergency'
+import 'leaflet/dist/leaflet.css'
+
+const facilityColors = { Hospital: '#d94d35', 'Emergency centre': '#245363', Shelter: '#168d84' }
+const facilityIcon = (type) => L.divIcon({ className: 'ner-map-marker', html: `<span style="--marker-color:${facilityColors[type] || facilityColors.Shelter}">+</span>`, iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14] })
+
+export default function EmergencyCommandMap({ showRoute }) {
+  return <div className="relative h-[420px] overflow-hidden border border-[#cbdcdf] bg-[#dfeceb] shadow-[0_8px_24px_rgba(31,67,80,0.08)]"><MapContainer center={mapCenter} zoom={7} scrollWheelZoom className="h-full w-full"><TileLayer key="facility-tiles" attribution='&copy; OpenStreetMap contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />{showRoute && <Polyline key="safest-route" positions={safestRoute.coordinates} pathOptions={{ color: '#168d84', weight: 6, dashArray: '10 8' }}><Popup><strong>Safest route</strong><br />Safety score: {safestRoute.safetyScore}</Popup></Polyline>}{emergencyFacilities.map((facility) => <Marker key={facility.id} position={facility.position} icon={facilityIcon(facility.type)}><Popup><strong>{facility.name}</strong><br />{facility.type}<br />Capacity: {facility.capacity}</Popup></Marker>)}</MapContainer><div className="absolute left-3 top-3 z-[500] border border-[#dce5e7] bg-white/95 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#173747] shadow-lg">Emergency facilities · mock layer</div><div className="absolute bottom-3 left-3 z-[500] flex flex-wrap gap-3 border border-[#dce5e7] bg-white/95 px-3 py-2 text-[10px] font-semibold text-[#58757e] shadow-lg"><span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-full bg-[#d94d35]" />Hospital</span><span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-full bg-[#245363]" />Emergency centre</span><span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-full bg-[#168d84]" />Shelter</span>{showRoute && <span className="flex items-center gap-1.5"><i className="h-0.5 w-4 bg-[#168d84]" />Safest route</span>}</div></div>
+}

@@ -7,10 +7,11 @@ import EmergencyResponse from './pages/EmergencyResponse'
 import Incidents from './pages/Incidents'
 import RiskMap from './pages/RiskMap'
 import RiskAnalytics from './pages/RiskAnalytics'
+import RoadMonitoring from './pages/RoadMonitoring'
 import Settings from './pages/Settings'
 
 function App() {
-  return <BrowserRouter><Routes><Route element={<AppLayout />}><Route index element={<Navigate to="/dashboard" replace />} /><Route path="dashboard" element={<Dashboard />} /><Route path="risk-map" element={<RiskMap />} /><Route path="risk-analytics" element={<RiskAnalytics />} /><Route path="incidents" element={<Incidents />} /><Route path="alerts" element={<Alerts />} /><Route path="emergency-response" element={<EmergencyResponse />} /><Route path="citizen-report" element={<CitizenReport />} /><Route path="settings" element={<Settings />} /></Route></Routes></BrowserRouter>
+  return <BrowserRouter><Routes><Route element={<AppLayout />}><Route index element={<Navigate to="/dashboard" replace />} /><Route path="dashboard" element={<Dashboard />} /><Route path="risk-map" element={<RiskMap />} /><Route path="risk-analytics" element={<RiskAnalytics />} /><Route path="road-monitoring" element={<RoadMonitoring />} /><Route path="incidents" element={<Incidents />} /><Route path="alerts" element={<Alerts />} /><Route path="emergency-response" element={<EmergencyResponse />} /><Route path="citizen-report" element={<CitizenReport />} /><Route path="settings" element={<Settings />} /></Route></Routes></BrowserRouter>
 }
 
 export default App
