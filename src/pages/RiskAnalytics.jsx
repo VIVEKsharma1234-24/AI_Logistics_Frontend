@@ -1,0 +1,39 @@
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import AnalyticsChartPanel from '../components/AnalyticsChartPanel'
+import PageIntro from '../components/PageIntro'
+import RiskBadge from '../components/RiskBadge'
+import RiskPredictionPanel from '../components/RiskPredictionPanel'
+import { incidentTrendData, rainfallRiskData, riskDistributionData, riskForecast, riskScoreData, roadAccessibilityData } from '../data/analytics'
+
+const axis = { fill: '#8aa0a6', fontSize: 11 }
+const tooltipStyle = { border: '1px solid #dce5e7', borderRadius: 0, fontSize: 12, boxShadow: '0 4px 12px rgba(31, 67, 80, 0.08)' }
+
+function ChartLegend({ items }) { return <div className="mt-2 flex flex-wrap gap-4 text-[11px] font-semibold text-[#718991]">{items.map(({ label, color }) => <span key={label} className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} />{label}</span>)}</div> }
+
+function RainfallRiskChart() {
+  return <AnalyticsChartPanel eyebrow="Weather signal" title="Rainfall vs risk" action="7 days"><ResponsiveContainer width="100%" height="100%"><AreaChart data={rainfallRiskData} margin={{ top: 8, right: 2, left: -22, bottom: 0 }}><defs><linearGradient id="analyticsRain" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#3abdb2" stopOpacity={0.3} /><stop offset="95%" stopColor="#3abdb2" stopOpacity={0} /></linearGradient><linearGradient id="analyticsRisk" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#ef6847" stopOpacity={0.2} /><stop offset="95%" stopColor="#ef6847" stopOpacity={0} /></linearGradient></defs><CartesianGrid stroke="#edf1f2" vertical={false} /><XAxis dataKey="period" axisLine={false} tickLine={false} tick={axis} /><YAxis axisLine={false} tickLine={false} tick={axis} /><Tooltip contentStyle={tooltipStyle} /><Area type="monotone" dataKey="rainfall" name="Rainfall (mm)" stroke="#3abdb2" fill="url(#analyticsRain)" strokeWidth={2} /><Area type="monotone" dataKey="risk" name="Risk score (%)" stroke="#ef6847" fill="url(#analyticsRisk)" strokeWidth={2} /></AreaChart></ResponsiveContainer><ChartLegend items={[{ label: 'Rainfall (mm)', color: '#3abdb2' }, { label: 'Risk score (%)', color: '#ef6847' }]} /></AnalyticsChartPanel>
+}
+
+function RiskScoreChart() {
+  return <AnalyticsChartPanel eyebrow="Risk movement" title="Risk score over time" action="Today"><ResponsiveContainer width="100%" height="100%"><LineChart data={riskScoreData} margin={{ top: 8, right: 8, left: -22, bottom: 0 }}><CartesianGrid stroke="#edf1f2" vertical={false} /><XAxis dataKey="period" axisLine={false} tickLine={false} tick={axis} /><YAxis domain={[0, 100]} axisLine={false} tickLine={false} tick={axis} /><Tooltip contentStyle={tooltipStyle} /><Line type="monotone" dataKey="score" name="Risk score (%)" stroke="#d94d35" strokeWidth={3} dot={{ r: 3, fill: '#d94d35', strokeWidth: 0 }} /></LineChart></ResponsiveContainer><ChartLegend items={[{ label: 'Risk score (%)', color: '#d94d35' }]} /></AnalyticsChartPanel>
+}
+
+function IncidentTrendChart() {
+  return <AnalyticsChartPanel eyebrow="Field reports" title="Incidents over time" action="7 days"><ResponsiveContainer width="100%" height="100%"><BarChart data={incidentTrendData} margin={{ top: 8, right: 2, left: -22, bottom: 0 }}><CartesianGrid stroke="#edf1f2" vertical={false} /><XAxis dataKey="period" axisLine={false} tickLine={false} tick={axis} /><YAxis allowDecimals={false} axisLine={false} tickLine={false} tick={axis} /><Tooltip contentStyle={tooltipStyle} /><Bar dataKey="incidents" name="Incidents" fill="#367985" radius={[2, 2, 0, 0]} /></BarChart></ResponsiveContainer><ChartLegend items={[{ label: 'Reported incidents', color: '#367985' }]} /></AnalyticsChartPanel>
+}
+
+function RoadAccessibilityChart() {
+  return <AnalyticsChartPanel eyebrow="Access network" title="Road accessibility" action="7 days"><ResponsiveContainer width="100%" height="100%"><AreaChart data={roadAccessibilityData} stackOffset="expand" margin={{ top: 8, right: 2, left: -22, bottom: 0 }}><CartesianGrid stroke="#edf1f2" vertical={false} /><XAxis dataKey="period" axisLine={false} tickLine={false} tick={axis} /><YAxis tickFormatter={(value) => `${Math.round(value * 100)}%`} axisLine={false} tickLine={false} tick={axis} /><Tooltip formatter={(value) => `${Math.round(value)}%`} contentStyle={tooltipStyle} /><Area type="monotone" dataKey="accessible" name="Accessible" stackId="1" stroke="#28a879" fill="#28a879" fillOpacity={0.8} /><Area type="monotone" dataKey="restricted" name="Restricted" stackId="1" stroke="#e2bd27" fill="#e2bd27" fillOpacity={0.85} /><Area type="monotone" dataKey="blocked" name="Blocked" stackId="1" stroke="#e4513f" fill="#e4513f" fillOpacity={0.9} /></AreaChart></ResponsiveContainer><ChartLegend items={[{ label: 'Accessible', color: '#28a879' }, { label: 'Restricted', color: '#e2bd27' }, { label: 'Blocked', color: '#e4513f' }]} /></AnalyticsChartPanel>
+}
+
+function RiskDistributionChart() {
+  return <AnalyticsChartPanel eyebrow="Regional posture" title="Risk distribution"><div className="relative h-full"><ResponsiveContainer width="100%" height="100%"><PieChart><Pie data={riskDistributionData} dataKey="zones" nameKey="level" cx="50%" cy="48%" innerRadius={58} outerRadius={88} paddingAngle={3}>{riskDistributionData.map((entry) => <Cell key={entry.level} fill={entry.color} />)}</Pie><Tooltip contentStyle={tooltipStyle} /></PieChart></ResponsiveContainer><div className="pointer-events-none absolute inset-0 flex items-center justify-center"><div className="text-center"><span className="display-font block text-2xl font-bold text-[#173747]">67</span><span className="text-[10px] uppercase tracking-[0.12em] text-[#8aa0a6]">zones</span></div></div></div><ChartLegend items={riskDistributionData.map(({ level, color }) => ({ label: level, color }))} /></AnalyticsChartPanel>
+}
+
+function ForecastPanel() {
+  return <section className="border border-[#dce5e7] bg-white p-5 shadow-[0_4px_16px_rgba(31,67,80,0.035)] sm:p-6"><div className="mb-5 flex items-start justify-between"><div><p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#ef6847]">Scenario outlook</p><h3 className="display-font mt-1 text-lg font-bold text-[#173747]">Risk forecast</h3></div><RiskBadge level="Critical" /></div><div className="grid grid-cols-2 gap-3">{riskForecast.map((item) => <div key={item.period} className="border border-[#edf1f2] bg-[#fbfcfc] p-3"><p className="text-xs text-[#718991]">{item.period}</p><p className="display-font mt-2 text-2xl font-bold text-[#d94d35]">{item.value}%</p><div className="mt-2 h-1 bg-[#f3e1dc]"><div className="h-1 bg-[#ef6847]" style={{ width: `${item.value}%` }} /></div></div>)}</div><p className="mt-5 text-[11px] leading-relaxed text-[#8aa0a6]">Mock forecast values for interface testing only. They are not connected to a live model or backend.</p></section>
+}
+
+export default function RiskAnalytics() {
+  return <div className="page-enter"><PageIntro eyebrow="Model insights" title="Risk analytics" description="Explore simulated environmental signals and operational trends for the monitored region. Values shown here are mock data for interface development." action="Export report" /><div className="mb-6 flex items-center gap-2 text-xs text-[#6e8991]"><span className="h-2 w-2 rounded-full bg-[#f0a64a]" />Simulation workspace · No live prediction connection</div><div className="grid gap-6 xl:grid-cols-[1.35fr_0.65fr]"><RiskPredictionPanel /><ForecastPanel /></div><div className="mt-6 grid gap-6 xl:grid-cols-2"><RainfallRiskChart /><RiskScoreChart /><IncidentTrendChart /><RoadAccessibilityChart /><RiskDistributionChart /></div></div>
+}
