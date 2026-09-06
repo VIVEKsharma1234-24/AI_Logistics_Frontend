@@ -1,0 +1,13 @@
+import { Menu, X } from 'lucide-react'
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { primaryNavigation, secondaryNavigation } from '../data/navigation'
+import BrandMark from './BrandMark'
+
+function NavigationLink({ item, onNavigate }) { const Icon = item.icon; return <NavLink to={item.path} onClick={onNavigate} className={({ isActive }) => `group flex items-center gap-3 px-3 py-3 text-sm font-medium transition ${isActive ? 'bg-[#244b5b] text-white' : 'text-[#9db3bb] hover:bg-[#1a3a49] hover:text-white'}`}><Icon size={18} strokeWidth={1.8} /><span className="flex-1">{item.label}</span>{item.badge && <span className="bg-[#f25c3d] px-1.5 py-0.5 text-[10px] font-bold text-white">{item.badge}</span>}</NavLink> }
+
+export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false)
+  const closeMenu = () => setIsOpen(false)
+  return <><button type="button" onClick={() => setIsOpen(true)} className="fixed left-4 top-4 z-30 flex h-10 w-10 items-center justify-center bg-[#123544] text-white shadow-lg lg:hidden" aria-label="Open navigation"><Menu size={20} /></button>{isOpen && <button type="button" aria-label="Close navigation overlay" onClick={closeMenu} className="fixed inset-0 z-40 bg-[#102f3b]/60 lg:hidden" />}<aside className={`fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col bg-[#123544] transition-transform duration-300 lg:static lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}><div className="flex items-center justify-between px-6 py-7"><BrandMark /><button type="button" onClick={closeMenu} className="text-[#9db3bb] lg:hidden" aria-label="Close navigation"><X size={20} /></button></div><div className="mx-6 mb-6 border-t border-[#2c5664]" /><div className="px-6 pb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#6f929e]">Command centre</div><nav className="space-y-1 px-3">{primaryNavigation.map((item) => <NavigationLink key={item.path} item={item} onNavigate={closeMenu} />)}</nav><div className="mt-8 px-6 pb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#6f929e]">Administration</div><nav className="space-y-1 px-3">{secondaryNavigation.map((item) => <NavigationLink key={item.path} item={item} onNavigate={closeMenu} />)}</nav><div className="mt-auto p-6"><div className="border border-[#356272] bg-[#173f4e] p-4"><div className="mb-3 flex items-center gap-2 text-xs font-semibold text-white"><span className="h-2 w-2 bg-[#45d0bd]" /> Systems operational</div><p className="text-xs leading-relaxed text-[#9db3bb]">Last sync 2 minutes ago</p></div><p className="mt-5 text-[10px] uppercase tracking-[0.15em] text-[#668793]">NER Disaster Management Authority</p></div></aside></>
+}

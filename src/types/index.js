@@ -1,0 +1,1 @@
+export const incidentStatuses = ['Open', 'In review', 'Resolved']
